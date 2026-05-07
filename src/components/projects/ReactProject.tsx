@@ -1,5 +1,3 @@
-import React from 'react'
-import { Projects } from '../../data/data'
 
 function ReactProject() {
    

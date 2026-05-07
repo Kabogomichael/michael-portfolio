@@ -1,6 +1,7 @@
 import devByt from "../assets/devbite.jpg";
 import shop from "../assets/shop.webp";
 import carhub from "../assets/carhub.png";
+import movieapp from "../assets/movieapp.jpeg"
 
 // export const Project = [
 //   { title: "E-Commerce App", desc: "Full stack store with Supabase & Next.js" },
