@@ -8,8 +8,6 @@ import heroImage from "../src/assets/portfolio.png";
 import Footer from "./components/Footer";
 import { Link } from "react-router-dom";
 
-
-import { Suspense } from "react";
 const name = "Michael";
 
 export default function Portfolio() {

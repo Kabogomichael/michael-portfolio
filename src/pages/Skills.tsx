@@ -1,8 +1,8 @@
 
-import { CloudLightning, LineDotRightHorizontalIcon, LucideSpotlight } from 'lucide-react'
+import { CloudLightning } from 'lucide-react'
 import { Skills } from '../data/data'
 import { motion } from 'framer-motion'
-import React from 'react'
+
 
 function SkillsPage() {
   return (

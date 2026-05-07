@@ -1,5 +1,4 @@
-import React from 'react'
-import GetAllProjects from '../components/projects/GetAllProjects'
+
 import { Card, CardContent } from "../../components/ui/card";
 import { Link } from 'react-router-dom'
 import { Projects } from '../data/data'
@@ -8,7 +7,6 @@ import { Button } from '../../components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 function Project() {
-  const links  = [{id:1,link:"/project/all",text:"all"},{id:1,link:"/project/react",text:"react"}]
   return (
     <section className="mt-10 max-w-6xl mx-auto text-white">
     <h2 className="text-2xl font-semibold mb-4 mx-6">Featured Projects</h2>

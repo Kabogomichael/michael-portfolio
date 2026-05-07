@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Portfolio from "./Portfolio";
+import  { useState } from "react";
 import NavBar from "./components/navigation/NavBar";
 import { ListMinus, X } from "lucide-react";
 import { Button } from "../components/ui/button";

@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Links } from "../router/navRoute";
 import { motion } from "framer-motion";
-import { Link, useLocation,useNavigate } from "react-router-dom";
+import {  useLocation,useNavigate } from "react-router-dom";
 
 type Prop = {
   setMobileNav: React.Dispatch<React.SetStateAction<boolean>>;
