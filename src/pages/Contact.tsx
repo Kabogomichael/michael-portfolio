@@ -2,17 +2,46 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
+import { toast } from "sonner";
+const FormKey  = import.meta.env.VITE_API_ACCESS_KEY
+
+
 
 function Contact() {
    
-   const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [message, setMessage] = useState("")
-   const handleSubmit =(e:React.FormEvent)=>{
-    e.preventDefault()
+  //  const [firstName, setFirstName] = useState("")
+  //   const [lastName, setLastName] = useState("")
+  //   const [email, setEmail] = useState("")
+  //   const [message, setMessage] = useState("")
+  //  const handleSubmit =(e:React.FormEvent)=>{
+  //   e.preventDefault()
 
-   }
+  //  }
+  
+
+  const [result, setResult] = useState(false);
+
+  const onSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setResult(true);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", FormKey);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    if (data.success) {
+     toast.success("Form Submitted Successfully")
+      form.reset()
+      setResult(false)
+    } else {
+      toast.error("error")
+    }
+  };
   return (
     <div className="relative">
       
@@ -60,6 +89,8 @@ function Contact() {
         </Card>
        </div>
       </section>
+
+      {/*CONTACT FORM */}
        
       <section>
         <motion.form
@@ -67,7 +98,7 @@ function Contact() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.3 }}
           action=""
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
           className="bg-zinc-900/50 border  border-zinc-700 w-xs md:w-xl lg:w-lg md:p-10 p-4 space-y-4  md:rounded-2xl rounded-lg  "
         >
           <div className="flex gap-2 lg:gap-4 justify-between  ">
@@ -76,8 +107,8 @@ function Contact() {
               <input
                 required
                 type="text"
-                value={firstName}
-                onChange={(e)=> setFirstName(e.target.value)}
+                name="first name"
+            
                 className="border mt-2 border-zinc-700 bg-zinc-800/40 rounded w-full  px-2 py-1"
               />
             </div>
@@ -86,8 +117,8 @@ function Contact() {
               <input
                 required
                 type="text"
-                value={lastName}
-                onChange={(e)=> setLastName(e.target.value)}
+                name="last name"
+                
                 className="border mt-2 border-zinc-700 bg-zinc-800/40 rounded w-full px-2 py-1"
               />
             </div>
@@ -99,22 +130,21 @@ function Contact() {
            
               required
               type="email"
-              value={email}
-              onChange={(e)=> setEmail(e.target.value)}
+              name="email"
+           
               className="border border-zinc-700 mt-2 bg-zinc-800/40 rounded w-full px-2 py-1"
             />
           </div>
           <div className="flex flex-col">
             <label className="capitalize  text-zinc-300">send message</label>
             <textarea 
-            value={message}
-            onChange={(e)=> setMessage(e.target.value)}
+            name="message"
               placeholder="enter message"
               className="border border-zinc-700 md:w-xs  bg-zinc-800/40 rounded placeholder:capitalize px-2 py-1 h-50 mt-2  "
             ></textarea>
           </div>
           <Button className="w-full py-5 capitalize" type="submit">
-            send message
+            {result? "sending...":"send message"}
           </Button>
         </motion.form>
       </section>

@@ -4,12 +4,15 @@ import { ListMinus, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import MobileNavBar from "./components/navigation/MobileNavBar";
 import AppRouter from "./components/router/AppRoute";
+import { Toaster } from "sonner";
 
 function App() {
   const [mobileNav, setMobileNav] = useState<boolean>(false);
 
   return (
     <>
+    <Toaster />
+    
       <div className="relative bg-zinc-950 ">
         <div className="sticky top-0 z-50">
           <NavBar />
