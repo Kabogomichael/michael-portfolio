@@ -38,6 +38,8 @@ function Contact() {
      toast.success("Form Submitted Successfully")
       form.reset()
       setResult(false)
+      console.log(data);
+      
     } else {
       toast.error("error")
       setResult(false)
