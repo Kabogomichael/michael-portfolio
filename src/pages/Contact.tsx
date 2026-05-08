@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { toast } from "sonner";
-const FormKey  = import.meta.env.VITE_API_ACCESS_KEY
+const FormKey  = import.meta.env.VITE_WEB3FORM_KEY
+
+
 
 
 
@@ -23,28 +25,50 @@ function Contact() {
 
   const [result, setResult] = useState(false);
 
-  const onSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
-    setResult(true);
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    formData.append("access_key", FormKey);
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.json();
-    if (data.success) {
-     toast.success("Form Submitted Successfully")
-      form.reset()
-      setResult(false)
-      
-      
-    } else {
-      toast.error("error")
-      setResult(false)
+  
+    try {
+      setResult(true);
+  
+      const form = event.currentTarget;
+  
+      const formData = new FormData(form);
+  
+      formData.append(
+        "access_key",
+        FormKey
+      );
+  
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+  
+      const data = await response.json();
+  
+      console.log(data);
+  
+      if (data.success) {
+        toast.success(
+          "Form Submitted Successfully"
+        );
+  
+        form.reset();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+  
+      toast.error("Something went wrong");
+    } finally {
+      setResult(false);
     }
   };
   return (
