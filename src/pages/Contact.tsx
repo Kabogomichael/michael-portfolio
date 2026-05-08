@@ -40,6 +40,7 @@ function Contact() {
       setResult(false)
     } else {
       toast.error("error")
+      setResult(false)
     }
   };
   return (
