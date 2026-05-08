@@ -2,7 +2,7 @@
 const name = "michael"
 function Footer() {
   return (
-    <footer className="text-center bg-zinc-950 text-zinc-500 mt-16 border-t border-zinc-700  pt-10 ">
+    <footer className="text-center bg-zinc-950 text-zinc-500 mt-16 border-t border-zinc-700  pt-10 h-30 ">
     © {new Date().getFullYear()}  {name}.Built with React.js & Tailwind.css .
   </footer>
   )
