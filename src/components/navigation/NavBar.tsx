@@ -33,11 +33,11 @@ function NavBar() {
               {nav.text}
             </motion.a>
           ))}
-          <a href={"/contact"}>
+          <Link to={"/contact"}>
             <h1 className="w-30 h-10 capitalize flex justify-center items-center cursor-pointer  rounded-md bg-primary   hover:border hover:bg-zinc-800 hover:border-zinc-400 text-center gap-2">
               Hire me <ArrowUpRight className="w-6 "/>
             </h1>
-          </a>
+          </Link>
         </div>
       </nav>
     </div>

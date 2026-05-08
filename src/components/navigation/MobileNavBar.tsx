@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Links } from "../router/navRoute";
 import { motion } from "framer-motion";
-import {  useLocation,useNavigate } from "react-router-dom";
+import {  Link, useLocation,useNavigate } from "react-router-dom";
 
 type Prop = {
   setMobileNav: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,21 +31,21 @@ function MobileNavBar({ setMobileNav }: Prop) {
         <div>
           <ul className="flex flex-col  ">
             {Links.map((nav) => (
-              <a
-                href={nav.link}
+              <Link
+                to={nav.link}
                 key={nav.link}
                 className=" hover:bg-zinc-800/80   py-4 rounded-lg m-2 "
               >
                 <li className={` text-gray-200 text-lg  capitalize ml-10 hover:text-primary ${pathname == nav.link? "text-primary ":""}`}>
                   {nav.text}
                 </li>
-              </a>
+              </Link>
             ))}
           </ul>
-          <a href={"/contact"}>  <Button className="min-w-screen mx-auto py-6 bg-linear-to-tr bg-transparent  hover:bg-green-700 border border-green-600 hover:border-0 text-xl" onClick={()=> navigate("/contact")}>
+          <Link to={"/contact"}>  <Button className="min-w-screen mx-auto py-6 bg-linear-to-tr bg-transparent  hover:bg-green-700 border border-green-600 hover:border-0 text-xl" onClick={()=> navigate("/contact")}>
             Hire
           </Button>
-          </a>
+          </Link>
         
         </div>
       </nav>
